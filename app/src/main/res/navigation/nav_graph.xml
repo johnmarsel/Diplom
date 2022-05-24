@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tourListFragment">
+
+    <fragment
+        android:id="@+id/tourListFragment"
+        android:name="com.johnmarsel.diplom.TourListFragment"
+        android:label="TourListFragment" >
+        <action
+            android:id="@+id/action_tourListFragment_to_tourFragment"
+            app:destination="@id/tourFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tourFragment"
+        android:name="com.johnmarsel.diplom.TourFragment"
+        android:label="TourFragment" />
+</navigation>
