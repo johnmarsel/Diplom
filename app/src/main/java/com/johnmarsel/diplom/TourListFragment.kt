@@ -50,17 +50,6 @@ class TourListFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        val toolbar = view.findViewById(R.id.toolbar) as Toolbar
-        toolbar.apply {
-            setupWithNavController(navController, appBarConfiguration)
-            title = resources.getText(R.string.app_name)
-        }
-    }
-
     private inner class ImagesHolder(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 

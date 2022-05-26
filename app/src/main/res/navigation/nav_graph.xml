@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/tourListFragment">
 
@@ -11,9 +12,17 @@
         <action
             android:id="@+id/action_tourListFragment_to_tourFragment"
             app:destination="@id/tourFragment" />
+        <action
+            android:id="@+id/action_tourListFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/tourFragment"
         android:name="com.johnmarsel.diplom.TourFragment"
         android:label="TourFragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.johnmarsel.diplom.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>
