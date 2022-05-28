@@ -1,7 +1,8 @@
 package com.johnmarsel.diplom
 
 import android.content.Context
-import android.content.Intent
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
+import com.johnmarsel.diplom.database.TourNew
+import com.johnmarsel.diplom.model.TourBox
 
 class TourListFragment : Fragment() {
 
@@ -45,30 +44,44 @@ class TourListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tour_list, container, false)
         toursRecyclerView = view.findViewById(R.id.recycler_view)
-        toursRecyclerView.adapter = ImagesAdapter(tourListViewModel.imageBox.tours)
-        toursRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        toursRecyclerView.layoutManager = GridLayoutManager(context, 1)
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tourListViewModel.tourListLiveData.observe(
+            viewLifecycleOwner
+        ) { tours ->
+            tours?.let {
+                toursRecyclerView.adapter = ImagesAdapter(tours)
+            }
+        }
     }
 
     private inner class ImagesHolder(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
-        private lateinit var tour: Tour
+        private lateinit var tour: TourNew
         private var pos = 0
 
-        private val imageName: TextView = itemView.findViewById(R.id.info_text)
-        private val infoImage: ImageView = itemView.findViewById(R.id.info_image)
+        private val tourImage: ImageView = itemView.findViewById(R.id.tour_image)
+        private val tourTitle: TextView = itemView.findViewById(R.id.tour_title)
+        private val tourLocation: TextView = itemView.findViewById(R.id.tour_location)
+        private val tourPrice: TextView = itemView.findViewById(R.id.tour_price)
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        fun bind(tour: Tour, position: Int) {
+        fun bind(tour: TourNew, position: Int) {
             this.tour = tour
             this.pos = position
-            imageName.text = tour.name
-
-            infoImage.setImageBitmap(tour.bitmap)
+            tourImage.setImageBitmap(tourListViewModel.imageBox[position].bitmap)
+            tourTitle.text = tour.title
+            tourLocation.text = tour.location
+            tourPrice.text = "${tour.price} ₽"
         }
 
         override fun onClick(view: View) {
@@ -77,7 +90,7 @@ class TourListFragment : Fragment() {
 
     }
 
-    private inner class ImagesAdapter(private val tours: List<Tour>) :
+    private inner class ImagesAdapter(private val tours: List<TourNew>) :
         RecyclerView.Adapter<ImagesHolder>() {
 
         override fun onCreateViewHolder(container: ViewGroup, viewType: Int): ImagesHolder {
