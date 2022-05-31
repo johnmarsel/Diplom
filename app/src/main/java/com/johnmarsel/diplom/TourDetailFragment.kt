@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.navigation.NavigationView
@@ -65,6 +63,17 @@ class TourFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.button.setOnClickListener {
+            val args = Bundle().apply {
+                putString(SEARCH_STRING, tour.title)
+                putString("dynamicTitle", tour.title)
+            }
+            findNavController().navigate(R.id.action_tourFragment_to_mapsFragment, args)
+        }
+    }
+
     private fun setUpToolbar() {
         val mainActivity = mActivity as MainActivity
         val navigationView: NavigationView = mActivity.findViewById(R.id.nav_view)
@@ -84,11 +93,9 @@ class TourFragment : Fragment() {
             tourLocationDeparture.text = "Из Москвы"
             tourDepartureTime.text = "5 июня"
             tourDuration.text = "6 ночей"
-            tourFood.text = "Питание"
             tourFoodAbout.text = "AI - Все включено"
-            roomAbout.text = "garden view"
-            roomAboutPeople.text = "2 взрослых"
-            services.text = "Услуги"
+            toorRoomAbout.text = "garden view"
+            roomAboutGuests.text = "2 взрослых"
             servicesAbout.text = "Медицинская страховка, трансфер"
             tourImage.setImageBitmap(image.bitmap)
         }

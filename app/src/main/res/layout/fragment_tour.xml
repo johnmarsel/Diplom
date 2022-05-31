@@ -28,7 +28,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -58,40 +59,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/button"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="На карте"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tour_description" />
+
             <ImageView
-                android:id="@+id/tour_location"
+                android:id="@+id/tour_location_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="72dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tour_description"
                 app:srcCompat="@drawable/ic_location_circle" />
-
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tour_location"
-                app:srcCompat="@drawable/ic_schedule_circle" />
 
             <TextView
                 android:id="@+id/tour_location_arrival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="73dp"
                 android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/tour_location"
+                app:layout_constraintStart_toEndOf="@+id/tour_location_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_description" />
 
             <TextView
@@ -103,38 +105,18 @@
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/tour_location"
+                app:layout_constraintStart_toEndOf="@+id/tour_location_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_location_arrival" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/tour_departure_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:srcCompat="@drawable/ic_food_circle" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:srcCompat="@drawable/ic_bed_circle" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:srcCompat="@drawable/ic_settings_circle" />
+                app:layout_constraintTop_toBottomOf="@+id/tour_location_image"
+                app:srcCompat="@drawable/ic_schedule_circle" />
 
             <TextView
                 android:id="@+id/tour_departure_time"
@@ -147,7 +129,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/tour_departure_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_location_departure" />
 
             <TextView
@@ -158,8 +140,18 @@
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/tour_departure_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_departure_time" />
+
+            <ImageView
+                android:id="@+id/tour_food_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tour_departure_image"
+                app:srcCompat="@drawable/ic_food_circle" />
 
             <TextView
                 android:id="@+id/tour_food"
@@ -167,12 +159,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="@string/food"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/tour_food_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_duration" />
 
             <TextView
@@ -183,11 +175,21 @@
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/tour_food_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_food" />
 
+            <ImageView
+                android:id="@+id/toor_room_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tour_food_image"
+                app:srcCompat="@drawable/ic_bed_circle" />
+
             <TextView
-                android:id="@+id/room_about"
+                android:id="@+id/toor_room_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -197,19 +199,29 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/toor_room_image"
                 app:layout_constraintTop_toBottomOf="@+id/tour_food_about" />
 
             <TextView
-                android:id="@+id/room_about_people"
+                android:id="@+id/room_about_guests"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/room_about" />
+                app:layout_constraintStart_toEndOf="@+id/toor_room_image"
+                app:layout_constraintTop_toBottomOf="@+id/toor_room_about" />
+
+            <ImageView
+                android:id="@+id/services_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toor_room_image"
+                app:srcCompat="@drawable/ic_settings_circle" />
 
             <TextView
                 android:id="@+id/services"
@@ -217,13 +229,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
-                android:text="TextView"
+                android:text="@string/services"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/room_about_people" />
+                app:layout_constraintStart_toEndOf="@+id/services_image"
+                app:layout_constraintTop_toBottomOf="@+id/room_about_guests" />
 
             <TextView
                 android:id="@+id/services_about"
@@ -233,9 +245,8 @@
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/services_image"
                 app:layout_constraintTop_toBottomOf="@+id/services" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

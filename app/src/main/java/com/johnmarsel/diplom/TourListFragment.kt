@@ -1,8 +1,6 @@
 package com.johnmarsel.diplom
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,17 +10,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.johnmarsel.diplom.database.TourNew
-import com.johnmarsel.diplom.model.TourBox
 
 class TourListFragment : Fragment() {
 
@@ -88,7 +83,7 @@ class TourListFragment : Fragment() {
 
         private val tourImage: ImageView = itemView.findViewById(R.id.tour_image)
         private val tourTitle: TextView = itemView.findViewById(R.id.tour_title)
-        private val tourLocation: TextView = itemView.findViewById(R.id.tour_location)
+        private val tourLocation: TextView = itemView.findViewById(R.id.tour_location_image)
         private val tourPrice: TextView = itemView.findViewById(R.id.tour_price)
 
         init {

@@ -23,6 +23,9 @@
         <argument
             android:name="dynamicTitle"
             app:argType="string" />
+        <action
+            android:id="@+id/action_tourFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
 
     <fragment
@@ -30,4 +33,12 @@
         android:name="com.johnmarsel.diplom.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.johnmarsel.diplom.MapsFragment"
+        android:label="{dynamicTitle}" >
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+    </fragment>
 </navigation>

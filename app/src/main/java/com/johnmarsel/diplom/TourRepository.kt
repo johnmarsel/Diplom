@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.johnmarsel.diplom.database.TourDatabase
 import com.johnmarsel.diplom.database.TourNew
-import java.util.*
 
 private const val DATABASE_NAME = "tour-database"
 

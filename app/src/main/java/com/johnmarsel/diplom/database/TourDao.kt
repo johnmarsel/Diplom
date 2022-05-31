@@ -2,7 +2,6 @@ package com.johnmarsel.diplom.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import java.util.*
 
 @Dao
 interface TourDao {

@@ -1,6 +1,5 @@
 package com.johnmarsel.diplom.model
 
-import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.BitmapFactory
 import android.util.Log
