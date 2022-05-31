@@ -10,23 +10,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.johnmarsel.diplom.database.TourNew
 import com.johnmarsel.diplom.model.TourBox
 
 class TourListFragment : Fragment() {
 
     interface Callbacks {
-        fun onTourSelected(position: Int)
+        fun onTourSelected(position: Int, title: String)
     }
 
     private var callbacks: Callbacks? = null
     private lateinit var tourListViewModel: TourListViewModel
     private lateinit var toursRecyclerView: RecyclerView
+    private lateinit var toolbar: Toolbar
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,7 +51,8 @@ class TourListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tour_list, container, false)
         toursRecyclerView = view.findViewById(R.id.recycler_view)
-        toursRecyclerView.layoutManager = GridLayoutManager(context, 1)
+        toursRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        toolbar = view.findViewById(R.id.toolbar)
 
         return view
     }
@@ -58,6 +66,18 @@ class TourListFragment : Fragment() {
                 toursRecyclerView.adapter = ImagesAdapter(tours)
             }
         }
+        setUpToolbar()
+    }
+
+    private fun setUpToolbar() {
+        val mainActivity = callbacks as MainActivity
+        val navigationView: NavigationView = mainActivity.findViewById(R.id.nav_view)
+
+        mainActivity.setSupportActionBar(toolbar)
+        val navController = NavHostFragment.findNavController(this)
+        val appBarConfiguration = mainActivity.appBarConfiguration
+        setupActionBarWithNavController(mainActivity,navController,appBarConfiguration)
+        setupWithNavController(navigationView,navController)
     }
 
     private inner class ImagesHolder(view: View) : RecyclerView.ViewHolder(view),
@@ -85,7 +105,7 @@ class TourListFragment : Fragment() {
         }
 
         override fun onClick(view: View) {
-            callbacks?.onTourSelected(pos)
+            callbacks?.onTourSelected(pos, tour.title)
         }
 
     }

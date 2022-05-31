@@ -19,7 +19,12 @@
     <fragment
         android:id="@+id/tourFragment"
         android:name="com.johnmarsel.diplom.TourFragment"
-        android:label="TourFragment" />
+        android:label="{dynamicTitle}" >
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.johnmarsel.diplom.InfoFragment"

@@ -1,5 +1,6 @@
 package com.johnmarsel.diplom
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,23 +9,29 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.FileProvider
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.johnmarsel.diplom.database.TourNew
+import com.johnmarsel.diplom.databinding.FragmentTourBinding
 
 const val TOUR_POSITION = "tour_pos"
 
 class TourFragment : Fragment() {
 
     private var pos = 0
-
+    private lateinit var binding: FragmentTourBinding
     private lateinit var tourDetailViewModel: TourDetailViewModel
-    private lateinit var tourDescription: TextView
-    private lateinit var tourImage: ImageView
+    private lateinit var mActivity : FragmentActivity
     private lateinit var tour: TourNew
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as FragmentActivity
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +46,15 @@ class TourFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_tour, container, false)
-        tourImage = view.findViewById(R.id.tour_image)
-        tourDescription = view.findViewById(R.id.tour_description)
-        return view
+    ): View {
+        binding = FragmentTourBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpToolbar()
         tourDetailViewModel.tourLiveData.observe(
             viewLifecycleOwner
         ) { tour ->
@@ -58,10 +65,34 @@ class TourFragment : Fragment() {
         }
     }
 
+    private fun setUpToolbar() {
+        val mainActivity = mActivity as MainActivity
+        val navigationView: NavigationView = mActivity.findViewById(R.id.nav_view)
+
+        mainActivity.setSupportActionBar(binding.toolbar)
+        val navController = NavHostFragment.findNavController(this)
+        setupActionBarWithNavController(mainActivity, navController)
+        setupWithNavController(navigationView, navController)
+    }
+
     private fun updateUI()  {
+
         val image = tourDetailViewModel.imageBox[pos]
-        tourDescription.text = tour.description
-        tourImage.setImageBitmap(image.bitmap)
+        binding.apply {
+            tourDescription.text = tour.description
+            tourLocationArrival.text = tour.location
+            tourLocationDeparture.text = "Из Москвы"
+            tourDepartureTime.text = "5 июня"
+            tourDuration.text = "6 ночей"
+            tourFood.text = "Питание"
+            tourFoodAbout.text = "AI - Все включено"
+            roomAbout.text = "garden view"
+            roomAboutPeople.text = "2 взрослых"
+            services.text = "Услуги"
+            servicesAbout.text = "Медицинская страховка, трансфер"
+            tourImage.setImageBitmap(image.bitmap)
+        }
+
     }
 
     companion object {
