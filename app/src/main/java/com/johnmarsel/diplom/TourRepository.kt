@@ -1,15 +1,32 @@
 package com.johnmarsel.diplom
 
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.room.Room
+import com.google.firebase.firestore.FirebaseFirestore
 import com.johnmarsel.diplom.database.TourDatabase
 import com.johnmarsel.diplom.database.TourNew
+import kotlin.coroutines.coroutineContext
 
 private const val DATABASE_NAME = "tour-database"
 
-class TourRepository private constructor(context: Context) {
+class TourRepository private constructor(private val context: Context) {
 
+    // Firestore part
+    private val mFireStore = FirebaseFirestore.getInstance()
+
+    fun <K, V> addRequestFirestore(map: MutableMap<K, V>, collectionPath: String) {
+        mFireStore.collection(collectionPath)
+            .add(map)
+            .addOnSuccessListener   {
+                Toast.makeText(context, "Заявка успешно оставлена!", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener  {
+                Toast.makeText(context, "Произошла ошибка $it", Toast.LENGTH_LONG).show()
+            }
+    }
+
+    // Room database part
     private val database : TourDatabase = Room.databaseBuilder(
         context.applicationContext,
         TourDatabase::class.java,

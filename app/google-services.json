@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "139611846579",
+    "project_id": "tourbox",
+    "storage_bucket": "tourbox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139611846579:android:48970e89305722f2317dc6",
+        "android_client_info": {
+          "package_name": "com.johnmarsel.diplom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139611846579-nqj3ijtlv6edh4s86t123uhro6c69pe4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCHxTYUEdsbTXA0fWDUzBgc4004Bm1NLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139611846579-nqj3ijtlv6edh4s86t123uhro6c69pe4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

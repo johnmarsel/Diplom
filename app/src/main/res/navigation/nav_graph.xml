@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_tourFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_tourFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
 
     <fragment
@@ -39,6 +42,17 @@
         android:label="{dynamicTitle}" >
         <argument
             android:name="dynamicTitle"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.johnmarsel.diplom.RequestFragment"
+        android:label="{dynamicTitle}" >
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+        <argument
+            android:name="tour"
             app:argType="string" />
     </fragment>
 </navigation>

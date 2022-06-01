@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -13,10 +14,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.johnmarsel.diplom.database.TourNew
 import com.johnmarsel.diplom.databinding.FragmentTourBinding
 
 const val TOUR_POSITION = "tour_pos"
+const val COLLECTION_PATH = "requests"
 
 class TourFragment : Fragment() {
 
@@ -71,6 +74,13 @@ class TourFragment : Fragment() {
                 putString("dynamicTitle", tour.title)
             }
             findNavController().navigate(R.id.action_tourFragment_to_mapsFragment, args)
+        }
+        binding.buttonFirestore.setOnClickListener {
+            val args = Bundle().apply {
+                putString(TOUR_TITLE, tour.title)
+                putString("dynamicTitle", tour.title)
+            }
+            findNavController().navigate(R.id.action_tourFragment_to_requestFragment, args)
         }
     }
 
