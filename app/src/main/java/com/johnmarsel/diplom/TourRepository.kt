@@ -7,7 +7,6 @@ import androidx.room.Room
 import com.google.firebase.firestore.FirebaseFirestore
 import com.johnmarsel.diplom.database.TourDatabase
 import com.johnmarsel.diplom.database.TourNew
-import kotlin.coroutines.coroutineContext
 
 private const val DATABASE_NAME = "tour-database"
 

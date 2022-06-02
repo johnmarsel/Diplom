@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import com.johnmarsel.diplom.databinding.FragmentRequestBinding
-import com.johnmarsel.diplom.databinding.FragmentTourBinding
 
 const val TOUR_TITLE = "tour_title"
 

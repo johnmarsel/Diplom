@@ -46,6 +46,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- Shadow below toolbar -->
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_shadow"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="105dp" />
+
             <TextView
                 android:id="@+id/tour_description"
                 android:layout_width="match_parent"
