@@ -105,6 +105,7 @@ class TourFragment : Fragment() {
             roomAboutGuests.text = "2 взрослых"
             servicesAbout.text = "Медицинская страховка, трансфер"
             tourImage.setImageBitmap(image.bitmap)
+            tourCost.text = "${tour.price} руб"
         }
 
     }

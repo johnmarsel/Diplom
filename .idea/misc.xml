@@ -22,17 +22,19 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/ic_settings.xml" value="0.1045" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/ic_settings_circle.xml" value="0.1225" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/ic_shopping_cart_white.xml" value="0.1045" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/star-48px.xml" value="0.127" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/test.xml" value="0.1045" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/drawable/test2.xml" value="0.1045" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_info.xml" value="0.264" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_maps.xml" value="0.536" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_request.xml" value="0.3165829145728643" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_maps.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_tour.xml" value="0.5052631578947369" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_tour_list.xml" value="0.264" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/fragment_tour_list.xml" value="0.4" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/list_item_image.xml" value="0.6" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/list_item_tour.xml" value="0.536" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/layout/list_item_tour.xml" value="0.6552631578947369" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.127" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/diplom/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.127" />
       </map>
     </option>
   </component>
