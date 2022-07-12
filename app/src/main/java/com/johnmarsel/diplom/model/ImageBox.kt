@@ -23,6 +23,12 @@ class TourBox private constructor(private val assets: AssetManager) {
 
         try {
             imageNames = assets.list(IMAGES_FOLDER)!!
+
+            imageNames.sortWith(compareBy { it.substringBefore("_").toInt() })
+
+            imageNames.forEach {
+                Log.d(TAG, it)
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Could not list assets", e)
             return emptyList()

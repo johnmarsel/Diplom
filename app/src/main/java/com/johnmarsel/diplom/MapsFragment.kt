@@ -77,6 +77,7 @@ class MapsFragment : Fragment(), Session.SearchListener {
 
     private fun updateUI() {
         binding.apply {
+            tourRatingBar.rating = tour.rating.toFloat()
             tourTitle.text = tour.title
             tourLocation.text = tour.location
         }

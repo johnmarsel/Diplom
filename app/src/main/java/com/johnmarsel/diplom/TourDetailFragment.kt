@@ -79,6 +79,16 @@ class TourFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_tourFragment_to_requestFragment, args)
         }
+        binding.button2.setOnClickListener {
+            val args = Bundle().apply {
+                putString("dynamicTitle", tour.title)
+            }
+            findNavController().navigate(R.id.action_tourFragment_to_tourPhotoFragment, args)
+        }
+        binding.button3.setOnClickListener {
+            findNavController().navigate(R.id.action_tourFragment_to_tourReviewFragment)
+        }
+
     }
 
     private fun setUpToolbar() {
@@ -95,6 +105,9 @@ class TourFragment : Fragment() {
 
         val image = tourDetailViewModel.imageBox[pos]
         binding.apply {
+            tourRatingBar.rating = tour.rating.toFloat()
+            tourName.text = tour.title
+            tourCity.text = tour.location.substringAfter(",").trim()
             tourDescription.text = tour.description
             tourLocationArrival.text = tour.location
             tourLocationDeparture.text = "Из Москвы"

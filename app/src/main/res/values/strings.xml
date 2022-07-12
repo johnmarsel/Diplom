@@ -2,8 +2,8 @@
     <string name="app_name">TourBox</string>
 
     <!-- Menu strings -->
-    <string name="info">Information</string>
-    <string name="home">Home</string>
+    <string name="info">О компании</string>
+    <string name="home">Главная</string>
     <string name="hello_blank_fragment">Hello</string>
     <string name="food">Питание</string>
     <string name="services">Услуги</string>
@@ -15,4 +15,12 @@
     <string name="client_name_hint">Ваше имя</string>
     <string name="client_phone_hint">Моб. телефон</string>
     <string name="client_email_hint">E-mail</string>
+    <string name="first_info">
+        Вы можете забронировать тур онлайн или
+        приехать к нам в офис, мы угостим вас чашечкой ароматного кофе и предложим
+        лучшие варианты путешествий под ваш запрос.
+    </string>
+    <string name="fragment_about_org_title">О компании</string>
+
+    <string name="divider_bullet">•</string>
 </resources>

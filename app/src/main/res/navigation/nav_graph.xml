@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/tourFragment"
         android:name="com.johnmarsel.diplom.TourFragment"
-        android:label="{dynamicTitle}" >
+        android:label="Информация о туре" >
         <argument
             android:name="dynamicTitle"
             app:argType="string" />
@@ -41,13 +41,20 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_to_right" />
+        <action
+            android:id="@+id/action_tourFragment_to_tourPhotoFragment"
+            app:destination="@id/tourPhotoFragment" />
+        <action
+            android:id="@+id/action_tourFragment_to_tourReviewFragment"
+            app:destination="@id/tourReviewFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.johnmarsel.diplom.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        android:name="com.johnmarsel.diplom.AboutOrgFragment"
+        android:label="@string/fragment_about_org_title"
+        tools:layout="@layout/fragment_about_org" >
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.johnmarsel.diplom.MapsFragment"
@@ -55,12 +62,28 @@
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.johnmarsel.diplom.RequestFragment"
-        android:label="{dynamicTitle}" >
+        android:label="Заявка на тур" >
         <argument
             android:name="dynamicTitle"
             app:argType="string" />
         <argument
             android:name="tour"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/tourPhotoFragment"
+        android:name="com.johnmarsel.diplom.TourPhotoFragment"
+        android:label="{dynamicTitle}" >
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/tourReviewFragment"
+        android:name="com.johnmarsel.diplom.TourReviewFragment"
+        android:label="Отзывы об отеле" >
+        <argument
+            android:name="dynamicTitle"
             app:argType="string" />
     </fragment>
 </navigation>

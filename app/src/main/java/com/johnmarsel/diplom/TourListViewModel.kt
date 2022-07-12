@@ -12,4 +12,8 @@ class TourListViewModel : ViewModel() {
     var tourListLiveData: LiveData<List<TourNew>> = tourRepository.getTours()
     val imageBox = TourBox.get().images
 
+    fun <K, V> addRequestFirestore(map: MutableMap<K, V>, collectionPath: String) {
+        tourRepository.addRequestFirestore(map, collectionPath)
+    }
+
 }

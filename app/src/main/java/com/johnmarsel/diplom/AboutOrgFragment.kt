@@ -13,7 +13,7 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 
-class InfoFragment : Fragment() {
+class AboutOrgFragment : Fragment() {
 
     private lateinit var mActivity : FragmentActivity
     private lateinit var toolbar: Toolbar
@@ -32,7 +32,7 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_info, container, false)
+        val view = inflater.inflate(R.layout.fragment_about_org, container, false)
         toolbar = view.findViewById(R.id.toolbar)
 
         return view
