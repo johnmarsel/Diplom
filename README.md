@@ -1,5 +1,5 @@
 # Diplom
-My graduation work.
+My university graduation work.
 
 TourBox - Example of an Android app for tour operator, letting its customers to make requests for tour booking.
 
