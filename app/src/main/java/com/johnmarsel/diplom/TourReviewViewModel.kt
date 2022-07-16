@@ -6,9 +6,10 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.johnmarsel.diplom.model.Tour
 
-class MapsViewModel: ViewModel() {
+class TourReviewViewModel: ViewModel() {
 
     private val tourRepository = TourRepository.get()
+
     private val tourIdLiveData = MutableLiveData<String>()
 
     var tourLiveData: LiveData<Tour> =

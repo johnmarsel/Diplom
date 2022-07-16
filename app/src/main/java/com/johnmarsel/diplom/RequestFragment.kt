@@ -13,12 +13,13 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import com.johnmarsel.diplom.databinding.FragmentRequestBinding
 
+private const val COLLECTION_PATH = "requests"
 const val TOUR_TITLE = "tour_title"
 
 class RequestFragment : Fragment() {
 
     private lateinit var binding: FragmentRequestBinding
-    private lateinit var param1: String
+    private lateinit var tourTitle: String
     private lateinit var requestViewModel: RequestViewModel
     private lateinit var mActivity : FragmentActivity
 
@@ -32,7 +33,7 @@ class RequestFragment : Fragment() {
         requestViewModel = ViewModelProvider(this).get(RequestViewModel::class.java)
 
         arguments?.let {
-            param1 = it.getString(TOUR_TITLE).toString()
+            tourTitle = it.getString(TOUR_TITLE).toString()
         }
     }
 
@@ -53,9 +54,8 @@ class RequestFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         binding.sendRequestButton.setOnClickListener {
-            val tourName = param1
             val userMap = mutableMapOf<String, String>()
-            userMap["Тур"] = tourName
+            userMap["Тур"] = tourTitle
             userMap["Имя"] = binding.clientName.text.toString()
             userMap["Телефон"] = binding.clientPhone.text.toString()
             userMap["E-Mail"] = binding.clientEmail.text.toString()

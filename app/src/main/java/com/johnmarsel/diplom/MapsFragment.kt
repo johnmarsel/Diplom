@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
-import com.johnmarsel.diplom.database.TourNew
 import com.johnmarsel.diplom.databinding.FragmentMapsBinding
+import com.johnmarsel.diplom.model.Tour
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.map.*
@@ -31,7 +31,7 @@ class MapsFragment : Fragment(), Session.SearchListener {
     private lateinit var mActivity : FragmentActivity
     private lateinit var searchManager: SearchManager
     private lateinit var mapsViewModel: MapsViewModel
-    private lateinit var tour: TourNew
+    private lateinit var tour: Tour
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -47,7 +47,7 @@ class MapsFragment : Fragment(), Session.SearchListener {
         SearchFactory.initialize(context)
         searchManager = SearchFactory.getInstance().createSearchManager(SearchManagerType.COMBINED)
 
-        val tourId = arguments?.getInt(SEARCH_TOUR_ID) as Int
+        val tourId = arguments?.getString(SEARCH_TOUR_ID).toString()
         mapsViewModel.loadTour(tourId)
     }
 
@@ -64,6 +64,7 @@ class MapsFragment : Fragment(), Session.SearchListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar()
+
         mapsViewModel.tourLiveData.observe(
             viewLifecycleOwner
         ) { tour ->

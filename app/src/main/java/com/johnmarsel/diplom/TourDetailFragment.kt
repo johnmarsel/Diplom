@@ -13,19 +13,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.johnmarsel.diplom.database.TourNew
 import com.johnmarsel.diplom.databinding.FragmentTourBinding
+import com.johnmarsel.diplom.model.Tour
 
-const val TOUR_POSITION = "tour_pos"
-const val COLLECTION_PATH = "requests"
+const val TOUR_ID = "tour_id"
 
 class TourFragment : Fragment() {
 
-    private var pos = 0
     private lateinit var binding: FragmentTourBinding
     private lateinit var tourDetailViewModel: TourDetailViewModel
     private lateinit var mActivity : FragmentActivity
-    private lateinit var tour: TourNew
+    private lateinit var tour: Tour
+    private lateinit var tourId: String
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,9 +36,9 @@ class TourFragment : Fragment() {
 
         tourDetailViewModel = ViewModelProvider(this).get(TourDetailViewModel::class.java)
         arguments?.let {
-            pos = it.getInt(TOUR_POSITION)
+            tourId = it.getString(TOUR_ID).toString()
         }
-        tourDetailViewModel.loadTour(pos+1)
+        tourDetailViewModel.loadTour(tourId)
     }
 
     override fun onCreateView(
@@ -66,29 +65,34 @@ class TourFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        val navController = findNavController()
+
         binding.button.setOnClickListener {
             val args = Bundle().apply {
-                putInt(SEARCH_TOUR_ID, tour.id)
+                putString(SEARCH_TOUR_ID, tourId)
             }
-            findNavController().navigate(R.id.action_tourFragment_to_mapsFragment, args)
+            navController.navigate(R.id.action_tourFragment_to_mapsFragment, args)
         }
         binding.buttonFirestore.setOnClickListener {
             val args = Bundle().apply {
                 putString(TOUR_TITLE, tour.title)
-                putString("dynamicTitle", tour.title)
             }
-            findNavController().navigate(R.id.action_tourFragment_to_requestFragment, args)
+            navController.navigate(R.id.action_tourFragment_to_requestFragment, args)
         }
         binding.button2.setOnClickListener {
             val args = Bundle().apply {
                 putString("dynamicTitle", tour.title)
+                putString(TOUR_ID, tourId)
             }
-            findNavController().navigate(R.id.action_tourFragment_to_tourPhotoFragment, args)
+            navController.navigate(R.id.action_tourFragment_to_tourPhotoFragment, args)
         }
         binding.button3.setOnClickListener {
-            findNavController().navigate(R.id.action_tourFragment_to_tourReviewFragment)
+            val args = Bundle().apply {
+                putString(TOUR_ID, tourId)
+            }
+            navController.navigate(R.id.action_tourFragment_to_tourReviewFragment, args)
         }
-
     }
 
     private fun setUpToolbar() {
@@ -102,33 +106,21 @@ class TourFragment : Fragment() {
     }
 
     private fun updateUI()  {
-
-        val image = tourDetailViewModel.imageBox[pos]
+        tourDetailViewModel.loadImageFromUrl(binding.tourImage.context, tour.photo, binding.tourImage)
         binding.apply {
             tourRatingBar.rating = tour.rating.toFloat()
             tourName.text = tour.title
             tourCity.text = tour.location.substringAfter(",").trim()
             tourDescription.text = tour.description
             tourLocationArrival.text = tour.location
-            tourLocationDeparture.text = "Из Москвы"
-            tourDepartureTime.text = "5 июня"
-            tourDuration.text = "6 ночей"
-            tourFoodAbout.text = "AI - Все включено"
-            toorRoomAbout.text = "garden view"
-            roomAboutGuests.text = "2 взрослых"
-            servicesAbout.text = "Медицинская страховка, трансфер"
-            tourImage.setImageBitmap(image.bitmap)
-            tourCost.text = "${tour.price} руб"
+            tourLocationDeparture.text = tour.departureCity
+            tourDepartureTime.text = tour.departureDate
+            tourDuration.text = tour.duration
+            tourFoodAbout.text = tour.foodAbout
+            toorRoomAbout.text = tour.roomAbout
+            roomAboutGuests.text = tour.aboutGuests
+            servicesAbout.text = tour.services
+            tourCost.text = binding.root.context.getString(R.string.tour_price, tour.price)
         }
-
-    }
-
-    companion object {
-        fun newInstance(pos: Int) =
-            TourFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(TOUR_POSITION, pos)
-                }
-            }
     }
 }

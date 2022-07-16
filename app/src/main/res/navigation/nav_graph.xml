@@ -18,15 +18,16 @@
             app:popExitAnim="@anim/slide_out_to_right" />
         <action
             android:id="@+id/action_tourListFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/tourFragment"
         android:name="com.johnmarsel.diplom.TourFragment"
         android:label="Информация о туре" >
-        <argument
-            android:name="dynamicTitle"
-            app:argType="string" />
         <action
             android:id="@+id/action_tourFragment_to_mapsFragment"
             app:destination="@id/mapsFragment"
@@ -43,10 +44,18 @@
             app:popExitAnim="@anim/slide_out_to_right" />
         <action
             android:id="@+id/action_tourFragment_to_tourPhotoFragment"
-            app:destination="@id/tourPhotoFragment" />
+            app:destination="@id/tourPhotoFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
         <action
             android:id="@+id/action_tourFragment_to_tourReviewFragment"
-            app:destination="@id/tourReviewFragment" />
+            app:destination="@id/tourReviewFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
 
     <fragment
@@ -64,9 +73,6 @@
         android:name="com.johnmarsel.diplom.RequestFragment"
         android:label="Заявка на тур" >
         <argument
-            android:name="dynamicTitle"
-            app:argType="string" />
-        <argument
             android:name="tour"
             app:argType="string" />
     </fragment>
@@ -81,9 +87,5 @@
     <fragment
         android:id="@+id/tourReviewFragment"
         android:name="com.johnmarsel.diplom.TourReviewFragment"
-        android:label="Отзывы об отеле" >
-        <argument
-            android:name="dynamicTitle"
-            app:argType="string" />
-    </fragment>
+        android:label="Отзывы об отеле" />
 </navigation>

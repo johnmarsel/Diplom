@@ -8,7 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 
-class MainActivity : AppCompatActivity(), TourListFragment.Callbacks {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     lateinit var appBarConfiguration : AppBarConfiguration
@@ -32,13 +32,5 @@ class MainActivity : AppCompatActivity(), TourListFragment.Callbacks {
     override fun onSupportNavigateUp(): Boolean {
 
         return navController.navigateUp(appBarConfiguration)
-    }
-
-    override fun onTourSelected(position: Int, title: String) {
-        val args = Bundle().apply {
-            putInt(TOUR_POSITION, position)
-            putString("dynamicTitle", title)
-        }
-        navController.navigate(R.id.action_tourListFragment_to_tourFragment, args)
     }
 }

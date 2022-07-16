@@ -1,25 +1,30 @@
 package com.johnmarsel.diplom
 
+import android.content.Context
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.johnmarsel.diplom.database.TourNew
-import com.johnmarsel.diplom.model.TourBox
+import com.johnmarsel.diplom.model.Tour
 
 class TourDetailViewModel: ViewModel() {
 
     private val tourRepository = TourRepository.get()
-    val imageBox = TourBox.get().images
-    private val tourIdLiveData = MutableLiveData<Int>()
 
-    var tourLiveData: LiveData<TourNew> =
+    private val tourIdLiveData = MutableLiveData<String>()
+
+    var tourLiveData: LiveData<Tour> =
         Transformations.switchMap(tourIdLiveData) { tourId ->
             tourRepository.getTour(tourId)
         }
 
-    fun loadTour(tourId: Int) {
+    fun loadTour(tourId: String) {
         tourIdLiveData.value = tourId
+    }
+
+    fun loadImageFromUrl(context: Context, url: String, view: ImageView)  {
+        tourRepository.loadImageFromUrl(context, url, view)
     }
 
 }

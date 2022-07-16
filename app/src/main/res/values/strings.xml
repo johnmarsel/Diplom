@@ -8,6 +8,8 @@
     <string name="food">Питание</string>
     <string name="services">Услуги</string>
 
+    <string name="tour_price">%s ₽</string>
+
     <string name="not_found_error_message">Not found</string>
     <string name="network_error_message">Network error</string>
     <string name="remote_error_message">Remote server error</string>
@@ -23,4 +25,6 @@
     <string name="fragment_about_org_title">О компании</string>
 
     <string name="divider_bullet">•</string>
+    <string name="hot_tours">Горящие туры</string>
+    <string name="no_data_available">Oops, couldn\'t find any results</string>
 </resources>
